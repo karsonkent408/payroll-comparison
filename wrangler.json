@@ -1,0 +1,52 @@
+{
+  "name": "payroll-comparison",
+  "main": "src/server/api/index.ts",
+  "compatibility_date": "2026-06-16",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_compat_populate_process_env"
+  ],
+  "observability": {
+    "logs": {
+      "enabled": false,
+      "invocation_logs": true
+    }
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/parties/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "comparison_db",
+      "database_id": "c4cbde0a-23fc-4813-a0dd-b64bd58e4f63",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "Main",
+        "class_name": "RoomServer"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["RoomServer"]
+    }
+  ],
+  "send_email": [
+    {
+      "name": "SEND_EMAIL",
+      "remote": true
+    }
+  ],
+  "vars": {
+    "CLOUDFLARE_GATEWAY_ID": "default"
+  }
+}

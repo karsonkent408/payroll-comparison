@@ -1,0 +1,6 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+run = "bun dev"
+run_mode = "concurrent"
+setup = "bun install\nbun setup"

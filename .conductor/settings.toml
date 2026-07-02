@@ -1,0 +1,4 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+setup = "bun install && cp \"$CONDUCTOR_ROOT_PATH/.env\" .env && bunx drizzle-kit migrate"
